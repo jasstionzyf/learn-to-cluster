@@ -1,7 +1,7 @@
 model:
     type: dsgcn
     kwargs:
-        feature_dim: 256
+        feature_dim: 512
         featureless: False
         reduce_method: max
         hidden_dims: [512, 64]
@@ -15,7 +15,8 @@ log_config:
 
 test_data:
     wo_weight: False
-    feat_path: ./data/features/part1_test.bin
+    feat_path: /data1/mlib_data/features/vcg_clustering/features/vcg_test.bin
     proposal_folders:
-        - ./data/cluster_proposals/part1_test/faiss_k_80_th_0.7_step_0.05_minsz_3_maxsz_300_iter_0/proposals/
-        - ./data/cluster_proposals/part1_test/faiss_k_80_th_0.75_step_0.05_minsz_3_maxsz_300_iter_0/proposals/
+        - /data1/mlib_data/features/vcg_clustering/cluster_proposals/vcg_test/faiss_k_80_th_0.7_step_0.05_minsz_3_maxsz_300_iter_0/proposals/
+        - /data1/mlib_data/features/vcg_clustering/cluster_proposals/vcg_test/faiss_k_80_th_0.75_step_0.05_minsz_3_maxsz_300_iter_0/proposals/
+

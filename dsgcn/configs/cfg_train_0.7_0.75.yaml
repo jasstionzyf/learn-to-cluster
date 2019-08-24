@@ -1,7 +1,7 @@
 model:
     type: dsgcn
     kwargs:
-        feature_dim: 256
+        feature_dim: 512
         featureless: False
         reduce_method: max
         hidden_dims: [512, 64]
@@ -39,18 +39,17 @@ workflow:
     - !!python/tuple ['train', 1]
 
 train_data:
-    feat_path: ./data/features/part0_train.bin
-    meta_path: ./data/labels/part0_train.meta
+    feat_path: /data1/mlib_data/features/vcg_clustering/features/vcg_train.bin
+    meta_path: /data1/mlib_data/features/vcg_clustering/labels/vcg_train.meta
     proposal_folders:
-        - ./data/cluster_proposals/part0_train/faiss_k_80_th_0.6_step_0.05_minsz_3_maxsz_300_iter_0/proposals/
-        - ./data/cluster_proposals/part0_train/faiss_k_80_th_0.65_step_0.05_minsz_3_maxsz_300_iter_0/proposals/
-        - ./data/cluster_proposals/part0_train/faiss_k_80_th_0.7_step_0.05_minsz_3_maxsz_300_iter_0/proposals/
-        - ./data/cluster_proposals/part0_train/faiss_k_80_th_0.75_step_0.05_minsz_3_maxsz_300_iter_0/proposals/
+        - /data1/mlib_data/features/vcg_clustering/cluster_proposals/vcg_train/faiss_k_80_th_0.7_step_0.05_minsz_2_maxsz_300_iter_0/proposals/
+        - /data1/mlib_data/features/vcg_clustering/cluster_proposals/vcg_train/faiss_k_80_th_0.75_step_0.05_minsz_2_maxsz_300_iter_0/proposals/
 
 test_data:
     wo_weight: False
-    feat_path: ./data/features/part1_test.bin
-    meta_path: ./data/labels/part1_test.meta
+    feat_path: /data1/mlib_data/features/vcg_clustering/features/vcg_test.bin
+    meta_path: /data1/mlib_data/features/vcg_clustering/labels/vcg_test.meta
     proposal_folders:
-        - ./data/cluster_proposals/part1_test/faiss_k_80_th_0.7_step_0.05_minsz_3_maxsz_300_iter_0/proposals/
-        - ./data/cluster_proposals/part1_test/faiss_k_80_th_0.75_step_0.05_minsz_3_maxsz_300_iter_0/proposals/
+        - /data1/mlib_data/features/vcg_clustering/cluster_proposals/vcg_test/faiss_k_80_th_0.7_step_0.05_minsz_2_maxsz_300_iter_0/proposals/
+        - /data1/mlib_data/features/vcg_clustering/cluster_proposals/vcg_test/faiss_k_80_th_0.75_step_0.05_minsz_2_maxsz_300_iter_0/proposals/
+

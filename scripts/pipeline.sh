@@ -1,11 +1,12 @@
-prefix=./data
-name=part1_test
+#!/usr/bin/env bash
+prefix=/data1/mlib_data/features/vcg_clustering/
+name=vcg_test
 
 oprefix=$prefix/cluster_proposals
 work_dir=$prefix/work_dir/cfg_test_0.7_0.75
 gt_labels=$prefix/labels/$name.meta
 
-dim=256
+dim=512
 knn=80
 method=faiss
 step=0.05
@@ -46,7 +47,7 @@ python dsgcn/main.py \
     --phase test \
     --config dsgcn/configs/cfg_test_0.7_0.75.yaml \
     --work_dir $work_dir \
-    --load_from data/pretrained_models/pretrained_gcn_d.pth.tar \
+    --load_from /data1/mlib_data/models/learn_to_cluster/pretrained_models/pretrained_gcn_d.pth.tar \
     --save_output
 
 

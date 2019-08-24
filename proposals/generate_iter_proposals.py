@@ -47,6 +47,7 @@ def parse_path(s):
         dic1[lst[i]] = lst[i + 1]
     dic = {lst[i]:lst[i+1] for i in range(0, len(lst), 2)}
     assert dic == dic1
+    print(dic)
     return dic
 
 
@@ -75,7 +76,7 @@ def generate_iter_proposals(oprefix, knn_prefix, feats, feat_dim=256, knn_method
 
     if not os.path.exists(sv_labels):
         raise FileNotFoundError(
-                '{} not found.'.format(pred_pred_labels))
+                '{} not found.'.format(sv_labels))
 
     if sv_knn_prefix is None:
         sv_knn_prefix = knn_prefix
@@ -134,6 +135,9 @@ if __name__ == '__main__':
     ds.info()
 
     sv_folder = os.path.dirname(args.sv_labels)
+    sv_folder = os.path.dirname(sv_folder)
+
+
     generate_iter_proposals(sv_folder,
                         os.path.join(sv_folder, 'knns'),
                         ds.features, args.dim, args.knn_method,

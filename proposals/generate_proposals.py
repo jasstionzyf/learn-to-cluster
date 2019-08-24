@@ -71,6 +71,7 @@ def generate_proposals(oprefix, knn_prefix, feats, feat_dim=256, knn_method='fai
             format(k, th_knn, th_step, max_size, is_rebuild))
 
     # build knns
+    # each node and it's top k nearest nodes also distancess
     knns = build_knns(knn_prefix, feats, knn_method, k, is_rebuild)
 
     # obtain cluster proposals

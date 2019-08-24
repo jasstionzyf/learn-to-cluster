@@ -1,19 +1,20 @@
-prefix=./data
-name=part1_test
+#!/usr/bin/env bash
+prefix=/data1/mlib_data/features/vcg_clustering/
+name=vcg_test
 oprefix=$prefix/cluster_proposals
 
-dim=256
+dim=512
 knn=80
 method=faiss
-th=0.75
+th=0.8
 step=0.05
-minsz=3
+minsz=4
 maxsz=300
-iter=0
+iter=1
 metric=pairwise
 
 gt_labels=$prefix/labels/$name.meta
-sv_labels=$oprefix/$name/$method\_k_$knn\_th_$th\_step_$step\_minsz_$minsz\_maxsz_$maxsz\_iter_$iter/pred_labels.txt
+sv_labels=/data1/mlib_data/features/vcg_clustering//cluster_proposals/vcg_test/faiss_k_2_th_0.4_step_0.05_minsz_4_maxsz_500_minsz_2_maxsz_16_iter_1/pred_labels.txt
 sv_knn_prefix=$prefix/knns/$name/
 
 # generate proposals iteratively
@@ -41,3 +42,7 @@ PYTHONPATH=. python proposals/generate_iter_proposals.py \
     --sv_labels $sv_labels \
     --sv_knn_prefix $sv_knn_prefix \
     --is_save_proposals
+PYTHONPATH=. /usr/local/miniconda3/bin/python evaluation/evaluate.py \
+    --metric $metric \
+    --gt_labels $prefix/labels/$name.meta \
+    --pred_labels /data1/mlib_data/features/vcg_clustering//cluster_proposals/vcg_test/faiss_k_2_th_0.4_step_0.05_minsz_4_maxsz_500_sv_minsz_2_maxsz_16_iter_1/pred_labels.txt
